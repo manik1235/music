@@ -1,9 +1,11 @@
 <template>
   <div class="XylophoneAlpha">
     <table>
-      <tr>
+      <tr :style="{ height: this.maxHeight }">
         <td v-for="kee in kees" :key="kee.id">
-          <XylophoneKey :styleObject="kee"/>
+          <div :style="{ height: kee.height + 'px' }">
+            <XylophoneKey :styleObject="kee"/>
+          </div>
         </td>
       </tr>
     </table>
@@ -17,10 +19,17 @@ export default {
   data() {
     return {
       kees: [
-        { color: 'red' },
-        { color: 'orange' }
+        { color: 'red', height: 10 },
+        { color: 'orange', height: 10 },
+        { color: 'yellow', height: 10 },
+        { color: 'green', height: 10 },
+        { color: 'blue', height: 10 },
+        { color: 'purple', height: 10 },
       ]
     }
+  },
+  computed: {
+    maxHeight: {}
   },
   components: {
     XylophoneKey
